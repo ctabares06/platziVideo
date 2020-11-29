@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { connect } from 'react-redux';
 import Search from '../components/Search';
@@ -15,7 +14,18 @@ const Home = ({ mylist, trends, originals }) => {
         <Carousel>
           {
             mylist.map((video) => {
-              return (<CarouselItem key={video.id} cover={video.cover} title={video.title} year={video.year} contentRating={video.contentRating} duration={video.duration} />);
+              return (
+                <CarouselItem
+                  key={video.id}
+                  id={video.id}
+                  cover={video.cover}
+                  title={video.title}
+                  year={video.year}
+                  contentRating={video.contentRating}
+                  duration={video.duration}
+                  list='mylist'
+                />
+              );
             })
           }
         </Carousel>
@@ -24,7 +34,17 @@ const Home = ({ mylist, trends, originals }) => {
         <Carousel>
           {
             trends.map((video) => {
-              return (<CarouselItem key={video.id} cover={video.cover} title={video.title} year={video.year} contentRating={video.contentRating} duration={video.duration} />);
+              return (
+                <CarouselItem
+                  key={video.id}
+                  id={video.id}
+                  cover={video.cover}
+                  title={video.title}
+                  year={video.year}
+                  contentRating={video.contentRating}
+                  duration={video.duration}
+                />
+              );
             })
           }
         </Carousel>
@@ -33,7 +53,17 @@ const Home = ({ mylist, trends, originals }) => {
         <Carousel>
           {
             originals.map((video) => {
-              return (<CarouselItem key={video.id} cover={video.cover} title={video.title} year={video.year} contentRating={video.contentRating} duration={video.duration} />);
+              return (
+                <CarouselItem
+                  key={video.id}
+                  id={video.id}
+                  cover={video.cover}
+                  title={video.title}
+                  year={video.year}
+                  contentRating={video.contentRating}
+                  duration={video.duration}
+                />
+              );
             })
           }
         </Carousel>
