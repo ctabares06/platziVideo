@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/Login.scss';
 import googleIcon from '../assets/img/google-icon.png';
 import twitterIcon from '../assets/img/twitter-icon.png';
-import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
