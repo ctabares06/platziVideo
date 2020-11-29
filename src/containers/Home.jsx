@@ -1,11 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import Footer from '../components/Footer';
 import UseInitialState from '../hooks/UseInitialState';
 import '../assets/styles/App.scss';
 
@@ -17,17 +15,13 @@ const Home = () => {
   if (!pageIsLoading) {
     return (
       <div className='app'>
-        <Header />
-        <Search />
         <h1>Cargando...</h1>
-        <Footer />
       </div>
     );
   }
 
   return (
-    <div className='app'>
-      <Header />
+    <>
       <Search />
       <Categories title='Mi lista'>
         <Carousel>
@@ -56,8 +50,7 @@ const Home = () => {
           }
         </Carousel>
       </Categories>
-      <Footer />
-    </div>
+    </>
   );
 };
 
