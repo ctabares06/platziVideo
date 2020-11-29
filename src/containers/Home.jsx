@@ -11,7 +11,7 @@ import '../assets/styles/App.scss';
 
 const Api = 'http://localhost:3000/initalState';
 
-const App = () => {
+const Home = () => {
   const [initialState, pageIsLoading] = UseInitialState(Api);
 
   if (!pageIsLoading) {
@@ -61,4 +61,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
