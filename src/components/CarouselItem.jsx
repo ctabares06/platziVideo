@@ -1,10 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { setFavoriteVideo, deleteFavoriteVideo } from '../actions/index';
 import '../assets/styles/components/CarouselItem.scss';
 import playIcon from '../assets/img/play-icon.png';
 import plusIcon from '../assets/img/plus-icon.png';
+import removeIcon from '../assets/img/remove-icon.png';
 
-const CarouselItem = ({ cover, title, year, contentRating, duration }) => {
+const CarouselItem = (props) => {
+  const { id, cover, title, year, contentRating, duration, list = false } = props;
+  const HandleSetFavorite = () => {
+    props.setFavoriteVideo({
+      id, cover, title, year, contentRating, duration,
+    });
+  };
+
+  const HandleDeleteFavorite = (id) => {
+    props.deleteFavoriteVideo(id);
+  };
 
   return (
     <div className='carousel-item'>
@@ -12,7 +25,11 @@ const CarouselItem = ({ cover, title, year, contentRating, duration }) => {
       <div className='carousel-item__details'>
         <div>
           <img className='carousel-item__details--img' src={playIcon} alt='Play Icon' />
-          <img className='carousel-item__details--img' src={plusIcon} alt='Plus Icon' />
+          {
+            list ?
+              <img className='carousel-item__details--img' onClick={() => HandleDeleteFavorite(id)} src={removeIcon} alt='remove Icon' /> :
+              <img className='carousel-item__details--img' onClick={HandleSetFavorite} src={plusIcon} alt='Plus Icon' />
+          }
         </div>
         <p className='carousel-item__details--title'>{title}</p>
         <p className='carousel-item__details--subtitle'>{`${year} ${contentRating} ${duration} minutos`}</p>
@@ -21,7 +38,13 @@ const CarouselItem = ({ cover, title, year, contentRating, duration }) => {
   );
 };
 
+const mapDispatchToProps = {
+  setFavoriteVideo,
+  deleteFavoriteVideo,
+};
+
 CarouselItem.propTypes = {
+  id: PropTypes.number,
   cover: PropTypes.string,
   title: PropTypes.string,
   year: PropTypes.number,
@@ -29,4 +52,4 @@ CarouselItem.propTypes = {
   duration: PropTypes.number,
 };
 
-export default CarouselItem;
+export default connect(null, mapDispatchToProps)(CarouselItem);

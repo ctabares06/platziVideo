@@ -1,33 +1,31 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import { connect } from 'react-redux';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import UseInitialState from '../hooks/UseInitialState';
 import '../assets/styles/App.scss';
 
-const Api = 'http://localhost:3000/initalState';
-
-const Home = () => {
-  const [initialState, pageIsLoading] = UseInitialState(Api);
-
-  if (!pageIsLoading) {
-    return (
-      <div className='app'>
-        <h1>Cargando...</h1>
-      </div>
-    );
-  }
-
+const Home = ({ mylist, trends, originals }) => {
   return (
     <>
       <Search />
       <Categories title='Mi lista'>
         <Carousel>
           {
-            initialState.mylist.map((video) => {
-              return (<CarouselItem key={video.id} cover={video.cover} title={video.title} year={video.year} contentRating={video.contentRating} duration={video.duration} />);
+            mylist.map((video) => {
+              return (
+                <CarouselItem
+                  key={video.id}
+                  id={video.id}
+                  cover={video.cover}
+                  title={video.title}
+                  year={video.year}
+                  contentRating={video.contentRating}
+                  duration={video.duration}
+                  list={true}
+                />
+              );
             })
           }
         </Carousel>
@@ -35,8 +33,18 @@ const Home = () => {
       <Categories title='Tendencias'>
         <Carousel>
           {
-            initialState.trends.map((video) => {
-              return (<CarouselItem key={video.id} cover={video.cover} title={video.title} year={video.year} contentRating={video.contentRating} duration={video.duration} />);
+            trends.map((video) => {
+              return (
+                <CarouselItem
+                  key={video.id}
+                  id={video.id}
+                  cover={video.cover}
+                  title={video.title}
+                  year={video.year}
+                  contentRating={video.contentRating}
+                  duration={video.duration}
+                />
+              );
             })
           }
         </Carousel>
@@ -44,8 +52,18 @@ const Home = () => {
       <Categories title='Orinigales de platziVideo'>
         <Carousel>
           {
-            initialState.originals.map((video) => {
-              return (<CarouselItem key={video.id} cover={video.cover} title={video.title} year={video.year} contentRating={video.contentRating} duration={video.duration} />);
+            originals.map((video) => {
+              return (
+                <CarouselItem
+                  key={video.id}
+                  id={video.id}
+                  cover={video.cover}
+                  title={video.title}
+                  year={video.year}
+                  contentRating={video.contentRating}
+                  duration={video.duration}
+                />
+              );
             })
           }
         </Carousel>
@@ -54,4 +72,12 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    mylist: state.mylist,
+    trends: state.trends,
+    originals: state.originals,
+  };
+};
+
+export default connect(mapStateToProps, null)(Home);
