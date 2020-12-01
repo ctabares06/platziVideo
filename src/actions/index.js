@@ -7,3 +7,12 @@ export const deleteFavoriteVideo = (payload) => ({
   type: 'DELETE_FAVORITE',
   payload,
 });
+
+export const loginRequest = (payload) => ({
+  type: 'LOGIN_REQUEST',
+  payload,
+});
+
+export const logoutRequest = () => ({
+  type: 'LOGOUT_REQUEST',
+});

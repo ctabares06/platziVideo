@@ -23,7 +23,7 @@ const Home = ({ mylist, trends, originals }) => {
                   year={video.year}
                   contentRating={video.contentRating}
                   duration={video.duration}
-                  list='mylist'
+                  list={true}
                 />
               );
             })
