@@ -12,7 +12,7 @@ const Header = (props) => {
   const { user } = props;
   const isUser = Object.keys(user).length === 0;
   const deleteUserSession = () => {
-    props.logoutRequest();
+    props.logoutRequest({});
   };
 
   return (

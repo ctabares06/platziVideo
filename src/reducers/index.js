@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     case 'LOGOUT_REQUEST':
       return {
         ...state,
-        user: {},
+        user: action.payload,
       };
     case 'SET_FAVORITE':
       if (state.mylist.filter((video) => video.id === action.payload.id).length !== 0) {
