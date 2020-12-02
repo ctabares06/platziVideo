@@ -29,6 +29,13 @@ const reducer = (state, action) => {
         ...state,
         mylist: state.mylist.filter((video) => video.id !== action.payload),
       };
+    case 'SET_PLAYING':
+      return {
+        ...state,
+        playing: state.trends.find((item) => item.id === Number(action.payload)) ||
+        state.originals.find((item) => item.id === Number(action.payload)) ||
+        [],
+      };
     default: return state;
   }
 };

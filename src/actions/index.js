@@ -22,3 +22,8 @@ export const setUserData = (payload) => ({
   type: 'USER_REGISTER',
   payload,
 });
+
+export const setPlayingVideo = (payload) => ({
+  type: 'SET_PLAYING',
+  payload,
+});
