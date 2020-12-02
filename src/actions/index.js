@@ -16,3 +16,8 @@ export const loginRequest = (payload) => ({
 export const logoutRequest = () => ({
   type: 'LOGOUT_REQUEST',
 });
+
+export const setUserData = (payload) => ({
+  type: 'USER_REGISTER',
+  payload,
+});
