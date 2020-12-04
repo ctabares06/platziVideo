@@ -5,10 +5,12 @@ import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
+import Header from '../components/Header';
 
 const Home = ({ mylist, trends, originals }) => {
   return (
     <>
+      <Header />
       <Search />
       <Categories title='Mi lista'>
         <Carousel>

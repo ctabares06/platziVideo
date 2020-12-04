@@ -10,10 +10,8 @@ const Player = (props) => {
   const playing = props.playing;
   const hasPlaying = Object.keys(playing).length > 0;
   useEffect(() => {
-    setTimeout(() => {
-      props.setPlayingVideo(id);
-      setLoading(false);
-    }, 1000);
+    props.setPlayingVideo(id);
+    setLoading(false);
   }, []);
 
   const goBack = () => {
